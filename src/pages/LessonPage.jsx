@@ -41,7 +41,7 @@ export default function LessonPage() {
 
   return (
     <div className="min-h-screen bg-[#0D0E1A]">
-      <div className="mx-auto max-w-3xl px-6 py-10">
+      <div className="mx-auto max-w-3xl px-4 py-6 sm:px-6 sm:py-10">
         {/* Back link */}
         <Link
           to={`/pillar/${pillar.slug}`}
@@ -51,7 +51,7 @@ export default function LessonPage() {
         </Link>
 
         {/* Breadcrumb */}
-        <div className="mt-2 flex items-center gap-1.5 text-xs text-[#4A4D6A]">
+        <div className="mt-2 flex flex-wrap items-center gap-1.5 text-xs text-[#4A4D6A]">
           <span>{pillar.title}</span>
           <ChevronRight size={12} />
           <span>{lesson.sectionTitle}</span>
@@ -66,7 +66,7 @@ export default function LessonPage() {
             <DurationBadge duration={lesson.duration} />
           </div>
           <h1
-            className="mt-4 text-3xl font-bold text-[#E8E9F3]"
+            className="mt-4 text-xl font-bold text-[#E8E9F3] sm:text-3xl"
             style={{ fontFamily: 'Sora, sans-serif', letterSpacing: '-0.025em' }}
           >
             {lesson.title}
@@ -113,11 +113,11 @@ export default function LessonPage() {
         )}
 
         {/* Prev / Next navigation */}
-        <div className="mt-12 flex justify-between gap-4">
+        <div className="mt-10 flex flex-col gap-3 sm:mt-12 sm:flex-row sm:justify-between sm:gap-4">
           {prevLesson ? (
             <Link
               to={`/pillar/${slug}/lesson/${prevLesson.id}`}
-              className="flex flex-1 items-center gap-2 rounded-xl border border-[#252637] bg-[#13141F] px-5 py-3 text-sm text-[#8B8FA8] transition-colors hover:border-[#6C63FF]/40 hover:text-[#E8E9F3]"
+              className="flex w-full items-center gap-2 rounded-xl border border-[#252637] bg-[#13141F] px-4 py-3 text-sm text-[#8B8FA8] transition-colors hover:border-[#6C63FF]/40 hover:text-[#E8E9F3] sm:flex-1 sm:px-5"
             >
               ← <span className="truncate">{prevLesson.title}</span>
             </Link>
@@ -127,7 +127,7 @@ export default function LessonPage() {
           {nextLesson ? (
             <Link
               to={`/pillar/${slug}/lesson/${nextLesson.id}`}
-              className="flex flex-1 items-center justify-end gap-2 rounded-xl border border-[#252637] bg-[#13141F] px-5 py-3 text-sm text-[#8B8FA8] transition-colors hover:border-[#6C63FF]/40 hover:text-[#E8E9F3]"
+              className="flex w-full items-center justify-end gap-2 rounded-xl border border-[#252637] bg-[#13141F] px-4 py-3 text-sm text-[#8B8FA8] transition-colors hover:border-[#6C63FF]/40 hover:text-[#E8E9F3] sm:flex-1 sm:px-5"
             >
               <span className="truncate">{nextLesson.title}</span> →
             </Link>

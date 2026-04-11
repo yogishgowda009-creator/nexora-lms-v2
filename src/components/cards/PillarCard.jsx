@@ -23,7 +23,7 @@ export default function PillarCard({ pillar, index }) {
       {/* Gradient top strip */}
       <div className={`h-1 w-full bg-gradient-to-r ${pillar.color ?? 'from-[#6C63FF] to-[#8B85FF]'}`} />
 
-      <div className="flex flex-col p-5">
+      <div className="flex flex-col p-4 sm:p-5">
       {/* Top row */}
       <div className="flex items-start justify-between">
         <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#6C63FF]/15">
@@ -53,7 +53,7 @@ export default function PillarCard({ pillar, index }) {
       )}
 
       {/* Stats */}
-      <div className="mt-4 flex items-center gap-4">
+      <div className="mt-4 flex flex-wrap items-center gap-3">
         <StatBadge icon={Clock}    value={`${pillar.estimatedHours}`} label="hrs" />
         <div className="h-3 w-px bg-[#252637]" />
         <StatBadge icon={BookOpen} value={`${totalLessons}`}          label="lessons" />

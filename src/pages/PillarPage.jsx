@@ -45,24 +45,24 @@ export default function PillarPage() {
 
   return (
     <div className="min-h-screen bg-[#0D0E1A]">
-      <div className="mx-auto max-w-6xl px-6 py-10">
+      <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
         {/* Back link */}
-        <Link to="/" className="text-sm text-[#8B8FA8] hover:text-[#E8E9F3] transition-colors">
+        <Link to="/" className="text-sm text-[#8B8FA8] transition-colors hover:text-[#E8E9F3]">
           ← All Pillars
         </Link>
 
-        {/* Two-column layout */}
-        <div className="mt-6 flex items-start gap-10">
+        {/* Two-column layout — stacks on mobile */}
+        <div className="mt-6 flex flex-col items-start gap-6 lg:flex-row lg:gap-10">
           {/* ── Left column ── */}
-          <div className="min-w-0 flex-1 pr-2">
+          <div className="min-w-0 flex-1 lg:pr-2">
             {/* Pillar header */}
             <h1
-              className="text-3xl font-bold text-[#E8E9F3]"
+              className="text-2xl font-bold text-[#E8E9F3] sm:text-3xl"
               style={{ fontFamily: 'Sora, sans-serif', letterSpacing: '-0.025em' }}
             >
               {pillar.title}
             </h1>
-            <p className="mt-1 text-lg text-[#8B8FA8]">{pillar.tagline}</p>
+            <p className="mt-1 text-base text-[#8B8FA8] sm:text-lg">{pillar.tagline}</p>
 
             {/* For whom */}
             <div className="mt-3">
@@ -82,18 +82,35 @@ export default function PillarPage() {
               ))}
             </div>
 
-            <div className="my-8 border-b border-[#252637]" />
+            <div className="my-6 border-b border-[#252637] sm:my-8" />
+
+            {/* Mobile section jump pills */}
+            <div className="mb-6 flex gap-2 overflow-x-auto pb-2 lg:hidden">
+              {pillar.sections.map((sec, i) => (
+                <button
+                  key={sec.id}
+                  onClick={() => onSectionClick(sec.id)}
+                  className={`flex-shrink-0 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors ${
+                    activeSectionId === sec.id
+                      ? 'border-[#6C63FF] bg-[#6C63FF] text-white'
+                      : 'border-[#252637] bg-[#1A1B2E] text-[#8B8FA8]'
+                  }`}
+                >
+                  {i + 1}. {sec.title}
+                </button>
+              ))}
+            </div>
 
             {/* Sections + lessons */}
             {pillar.sections.map((section, sIdx) => (
-              <div key={section.id} id={section.id} className={sIdx > 0 ? 'mt-12' : ''}>
+              <div key={section.id} id={section.id} className={sIdx > 0 ? 'mt-10 sm:mt-12' : ''}>
                 {/* Section header */}
                 <div className="mb-5 flex items-center gap-3">
                   <span className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-[#6C63FF]/15 text-xs font-bold text-[#6C63FF]">
                     {sIdx + 1}
                   </span>
                   <h2
-                    className="text-lg font-semibold text-[#E8E9F3]"
+                    className="text-base font-semibold text-[#E8E9F3] sm:text-lg"
                     style={{ fontFamily: 'Sora, sans-serif' }}
                   >
                     {section.title}
@@ -111,10 +128,7 @@ export default function PillarPage() {
                     return (
                       <div key={lesson.id} className={`fade-up stagger-${Math.min((num - 1) % 4, 5)}`}>
                         <Link to={`/pillar/${pillar.slug}/lesson/${lesson.id}`} className="block">
-                          <LessonCard
-                            lesson={lesson}
-                            lessonNumber={num}
-                          />
+                          <LessonCard lesson={lesson} lessonNumber={num} />
                         </Link>
                       </div>
                     )
@@ -124,12 +138,14 @@ export default function PillarPage() {
             ))}
           </div>
 
-          {/* ── Right column: Sidebar ── */}
-          <StickyPillarSidebar
-            pillar={pillar}
-            activeSectionId={activeSectionId}
-            onSectionClick={onSectionClick}
-          />
+          {/* ── Sidebar — hidden on mobile, shown on lg+ ── */}
+          <div className="hidden lg:block">
+            <StickyPillarSidebar
+              pillar={pillar}
+              activeSectionId={activeSectionId}
+              onSectionClick={onSectionClick}
+            />
+          </div>
         </div>
       </div>
     </div>
