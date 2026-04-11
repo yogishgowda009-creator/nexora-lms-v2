@@ -66,7 +66,7 @@ export default function LessonPage() {
             <DurationBadge duration={lesson.duration} />
           </div>
           <h1
-            className="mt-4 text-xl font-bold text-[#E8E9F3] sm:text-3xl"
+            className="mt-4 text-lg font-bold text-[#E8E9F3] sm:text-2xl lg:text-3xl"
             style={{ fontFamily: 'Sora, sans-serif', letterSpacing: '-0.025em' }}
           >
             {lesson.title}

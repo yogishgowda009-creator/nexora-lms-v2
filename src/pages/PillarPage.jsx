@@ -57,16 +57,16 @@ export default function PillarPage() {
           <div className="min-w-0 flex-1 lg:pr-2">
             {/* Pillar header */}
             <h1
-              className="text-2xl font-bold text-[#E8E9F3] sm:text-3xl"
+              className="text-xl font-bold text-[#E8E9F3] sm:text-2xl lg:text-3xl"
               style={{ fontFamily: 'Sora, sans-serif', letterSpacing: '-0.025em' }}
             >
               {pillar.title}
             </h1>
-            <p className="mt-1 text-base text-[#8B8FA8] sm:text-lg">{pillar.tagline}</p>
+            <p className="mt-1 text-sm text-[#8B8FA8] sm:text-base lg:text-lg">{pillar.tagline}</p>
 
             {/* For whom */}
             <div className="mt-3">
-              <span className="inline-flex items-center gap-2 rounded-full border border-[#252637] bg-[#1A1B2E] px-3 py-1 text-sm text-[#8B8FA8]">
+              <span className="inline-flex flex-wrap items-center gap-1.5 rounded-lg border border-[#252637] bg-[#1A1B2E] px-3 py-1.5 text-xs text-[#8B8FA8] sm:rounded-full sm:text-sm">
                 <span className="text-[#4A4D6A]">For:</span>
                 {pillar.targetAudience}
               </span>
@@ -84,21 +84,22 @@ export default function PillarPage() {
 
             <div className="my-6 border-b border-[#252637] sm:my-8" />
 
-            {/* Mobile section jump pills */}
-            <div className="mb-6 flex gap-2 overflow-x-auto pb-2 lg:hidden">
-              {pillar.sections.map((sec, i) => (
-                <button
-                  key={sec.id}
-                  onClick={() => onSectionClick(sec.id)}
-                  className={`flex-shrink-0 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors ${
-                    activeSectionId === sec.id
-                      ? 'border-[#6C63FF] bg-[#6C63FF] text-white'
-                      : 'border-[#252637] bg-[#1A1B2E] text-[#8B8FA8]'
-                  }`}
-                >
-                  {i + 1}. {sec.title}
-                </button>
-              ))}
+            {/* Mobile section jump — native select dropdown */}
+            <div className="mb-6 lg:hidden">
+              <label className="mb-1.5 block text-xs font-semibold uppercase tracking-wider text-[#4A4D6A]">
+                Jump to section
+              </label>
+              <select
+                value={activeSectionId}
+                onChange={(e) => onSectionClick(e.target.value)}
+                className="w-full rounded-lg border border-[#252637] bg-[#1A1B2E] px-3 py-2.5 text-sm text-[#E8E9F3] focus:border-[#6C63FF] focus:outline-none"
+              >
+                {pillar.sections.map((sec, i) => (
+                  <option key={sec.id} value={sec.id}>
+                    {i + 1}. {sec.title}
+                  </option>
+                ))}
+              </select>
             </div>
 
             {/* Sections + lessons */}
