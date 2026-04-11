@@ -164,7 +164,7 @@ export const pillars = [
             summary: 'Every technical interview has four acts: intro & culture fit (10 min), technical problem solving (30–40 min), system design or domain questions (15 min), and candidate questions (10 min). Knowing what\'s coming removes 80% of the panic.',
             keyTakeaway: 'The intro round is not small talk — your \'Tell me about yourself\' sets the tone for the entire interview.',
             resources: [
-              { label: 'Exponent: How Tech Interviews Work', url: 'https://www.tryexponent.com/blog/how-technical-interviews-work' },
+              { label: 'Exponent: Interview Guides', url: 'https://www.tryexponent.com/guides' },
             ],
           },
           {
@@ -454,7 +454,7 @@ export const pillars = [
             summary: 'Three moves that win GDs: (1) Open strong in the first 30 seconds with a structured point. (2) Bridge and build on others\' points — acknowledge then extend. (3) Summarize in the last 2 minutes. Evaluators reward structured thinkers, not volume.',
             keyTakeaway: 'Quality beats quantity in GDs. Two structured, well-reasoned points beat five fragmented interjections every time.',
             resources: [
-              { label: 'IndiaBix GD Topics', url: 'https://www.indiabix.com/group-discussion/topics/' },
+              { label: 'IndiaBix GD Topics', url: 'https://www.indiabix.com/group-discussion/' },
             ],
           },
         ],
